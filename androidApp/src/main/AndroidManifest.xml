@@ -6,11 +6,11 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/title_activity_shirt_detail"
-            android:theme="@style/AppTheme.NoActionBar" />
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/title_activity_shirt_detail"-->
+<!--            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".ShirtDetailActivity"
             android:exported="true">

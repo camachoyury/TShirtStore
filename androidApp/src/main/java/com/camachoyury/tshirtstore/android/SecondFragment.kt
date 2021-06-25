@@ -31,8 +31,6 @@ class SecondFragment : Fragment() {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
          id = arguments?.getString("id").toString()
-
-
         return binding.root
 
     }
@@ -45,14 +43,20 @@ class SecondFragment : Fragment() {
 
         getShirtList.getCategorie(id,
             success = {
-                binding.textviewSecond.text = it.toString()
+                binding.detailTitle.text = it.title
+                binding.detailDescription.text = it.description
+                binding.detailPrice.text = it.price.toString()
+                val imageUri = "@drawable/${it.image}"
+                val imageResource =
+                    resources.getIdentifier(imageUri, null, this.context?.packageName)
+                binding.detailImage.setImageResource(imageResource)
 
             },
             failure = ::handleError
         )
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+//        binding.buttonSecond.setOnClickListener {
+//            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+//        }
     }
 
     private fun handleError(ex: Throwable?) {

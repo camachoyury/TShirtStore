@@ -23,13 +23,14 @@ class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
+    private lateinit var  getShirtList:GetShirtList
     private var shirts: MutableList<Shirt> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+         getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -42,7 +43,8 @@ class FirstFragment : Fragment() {
 //
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
 //        }
-        val getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
+
+
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager( this.requireContext(),2)
         binding.recyclerViewShirts.layoutManager = layoutManager
         var adapter =  ShirtAdapter(shirts,context = this.requireContext()){
