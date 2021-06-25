@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         getShirtList.getCategoriesList(
             success = {
                 adapter.setShirtList(it)
-
             },
             failure = ::handleError
         )

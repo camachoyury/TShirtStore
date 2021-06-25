@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.camachoyury.tshirtstore.GetShirtList
+import com.camachoyury.tshirtstore.Injector
 import com.camachoyury.tshirtstore.Shirt
 import com.camachoyury.tshirtstore.ShirtRepositoryImpl
 import com.camachoyury.tshirtstore.android.databinding.FragmentFirstBinding

@@ -14,7 +14,7 @@ class ShirtRepositoryImpl(private val api: Api) {
     }
 
 
-    fun getTShirtList(id:String ): Flow<Shirt> {
+    fun getTShirtList(id: String ): Flow<Shirt> {
         return flow {
             val shirt = api.getTShirtList().shirt.find { s -> s.image == id }
             emit(shirt!!)

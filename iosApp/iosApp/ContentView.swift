@@ -2,9 +2,17 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greeting()
+	let getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
 
 	var body: some View {
+
+	  getShirtList.getCategoriesList(
+                success = {
+                    adapter.setShirtList(it)
+
+                },
+                failure = ::handleError
+            )
 		Text(greet)
 	}
 }
