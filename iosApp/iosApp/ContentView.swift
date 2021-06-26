@@ -2,18 +2,24 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
+    let getShirtList = Injector.init().getShirtList
+    @State var greet = "Loading..."
+    func load(){
+        getShirtList.getCategory(string: "ts_10_13058b") { shirt in
+            print(shirt)
+            self.greet = shirt.description()
+        } failure: { (error) in
+            greet = "Error: \(error)"
+        }
+    }
 
 	var body: some View {
+        
 
-	  getShirtList.getCategoriesList(
-                success = {
-                    adapter.setShirtList(it)
-
-                },
-                failure = ::handleError
-            )
-		Text(greet)
+        Text(greet).onAppear(){
+            load()
+        }
+		
 	}
 }
 

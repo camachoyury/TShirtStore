@@ -13,10 +13,10 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    val coroutinesVersion = "1.5.0-RC"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+//    val coroutinesVersion = "1.5.0-RC"
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+//    implementation("androidx.recyclerview:recyclerview:1.2.1")
 }
 
 android {

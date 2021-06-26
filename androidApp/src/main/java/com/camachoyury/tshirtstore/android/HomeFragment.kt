@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.camachoyury.tshirtstore.GetShirtList
 import com.camachoyury.tshirtstore.Injector
 import com.camachoyury.tshirtstore.Shirt
-import com.camachoyury.tshirtstore.ShirtRepositoryImpl
 import com.camachoyury.tshirtstore.android.databinding.FragmentFirstBinding
-import com.camachoyury.tshirtstore.network.Api
 
 class HomeFragment : Fragment() {
 
