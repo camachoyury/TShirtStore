@@ -23,15 +23,14 @@ struct ContentView: View {
                     List(shirts, id: \.self) { shirt in
                     
                         VStack(alignment: .leading) {
-                                 
+                            Image(shirt.image).resizable().scaledToFit()
                             Text(shirt.title)
                                 .font(.title)
                                 .fontWeight(.bold)
                             Text(String(shirt.price))
                                 .font(.subheadline)
                                 .fontWeight(.bold)
-                            Text(shirt.description)
-                                .font(.body)
+
                         }
                     }
                     //2.
