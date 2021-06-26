@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.camachoyury.tshirtstore.android.FirstFragment"
+        android:name="com.camachoyury.tshirtstore.android.HomeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.camachoyury.tshirtstore.android.SecondFragment"
+        android:name="com.camachoyury.tshirtstore.android.DetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

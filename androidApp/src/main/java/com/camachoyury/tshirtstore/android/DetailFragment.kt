@@ -10,7 +10,7 @@ import com.camachoyury.tshirtstore.ShirtRepositoryImpl
 import com.camachoyury.tshirtstore.android.databinding.FragmentSecondBinding
 import com.camachoyury.tshirtstore.network.Api
 
-class SecondFragment : Fragment() {
+class DetailFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!

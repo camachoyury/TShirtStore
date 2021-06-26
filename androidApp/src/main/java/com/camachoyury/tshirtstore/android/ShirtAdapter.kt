@@ -42,9 +42,7 @@ class ShirtAdapter(
                     context.resources.getIdentifier(imageUri, null, context.packageName)
                 binding.shirtImage.setImageResource(imageResource)
                 binding.root.setOnClickListener { onItemClicked(this) }
-
             }
-
         }
     }
 

@@ -1,47 +1,40 @@
 package com.camachoyury.tshirtstore.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
-import com.camachoyury.tshirtstore.GetShirtList
-import com.camachoyury.tshirtstore.ShirtRepositoryImpl
-import com.camachoyury.tshirtstore.android.databinding.ActivityMainBinding
-import com.camachoyury.tshirtstore.network.Api
-
-import androidx.recyclerview.widget.RecyclerView
-import com.camachoyury.tshirtstore.Shirt
-
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.camachoyury.tshirtstore.android.databinding.ActivityShirtDetailBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private var shirts: MutableList<Shirt> = ArrayList()
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityShirtDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityShirtDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
-        binding.recyclerViewShirts.layoutManager = layoutManager
-        var adapter = ShirtAdapter(shirts, context = this) {
+        setSupportActionBar(binding.toolbar)
 
-        }
-        binding.recyclerViewShirts.adapter = adapter
+        val navController = findNavController(R.id.nav_host_fragment_content_shirt_detail)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        getShirtList.getCategoriesList(
-            success = {
-                adapter.setShirtList(it)
-            },
-            failure = ::handleError
+        binding.bottomNavigation.setupWithNavController(
+            findNavController(R.id.nav_host_fragment_content_shirt_detail)
         )
     }
 
-    private fun handleError(ex: Throwable?) {
-
-        ex?.printStackTrace()
-
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_shirt_detail)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
     }
 }

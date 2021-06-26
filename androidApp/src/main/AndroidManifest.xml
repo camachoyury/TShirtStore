@@ -12,7 +12,7 @@
 <!--            android:label="@string/title_activity_shirt_detail"-->
 <!--            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
-            android:name=".ShirtDetailActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
