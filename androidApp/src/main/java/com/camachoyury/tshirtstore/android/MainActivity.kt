@@ -2,14 +2,11 @@ package com.camachoyury.tshirtstore.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.camachoyury.tshirtstore.Greeting
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.camachoyury.tshirtstore.GetShirtList
 import com.camachoyury.tshirtstore.ShirtRepositoryImpl
 import com.camachoyury.tshirtstore.android.databinding.ActivityMainBinding
 import com.camachoyury.tshirtstore.network.Api
-import androidx.recyclerview.widget.LinearLayoutManager
 
 import androidx.recyclerview.widget.RecyclerView
 import com.camachoyury.tshirtstore.Shirt

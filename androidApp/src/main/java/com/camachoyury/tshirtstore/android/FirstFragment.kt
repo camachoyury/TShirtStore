@@ -16,9 +16,6 @@ import com.camachoyury.tshirtstore.ShirtRepositoryImpl
 import com.camachoyury.tshirtstore.android.databinding.FragmentFirstBinding
 import com.camachoyury.tshirtstore.network.Api
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
@@ -30,7 +27,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
+         getShirtList = Injector.getShirtList
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 

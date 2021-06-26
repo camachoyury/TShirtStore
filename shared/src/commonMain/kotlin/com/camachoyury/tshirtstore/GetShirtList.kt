@@ -21,7 +21,7 @@ class GetShirtList(private val shirtRepositoryImpl: ShirtRepositoryImpl) {
         }
     }
 
-    fun getCategorie(string:String,  success: (Shirt) -> Unit, failure: (Throwable?) -> Unit) {
+    fun getCategory(string:String, success: (Shirt) -> Unit, failure: (Throwable?) -> Unit) {
         coroutineScope.launch {
             try {
                 shirtRepositoryImpl.getTShirtList(string).collect {
