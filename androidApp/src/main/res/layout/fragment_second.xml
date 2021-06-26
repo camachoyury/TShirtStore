@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ts_10_11019a"/>
+            android:src="@drawable/placeholder"/>
 
         <TextView
             android:id="@+id/detailTitle"
@@ -56,13 +56,13 @@
             android:textColor="#777777"
             android:text="A versatile full-zip that you can wear all day long and even..."/>
 
-        <!--    <include-->
-        <!--        android:id="@+id/googlePayButton"-->
-        <!--        layout="@layout/buy_with_googlepay_button"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="@dimen/buy_button_height"-->
-        <!--        android:layout_marginBottom="20dp"-->
-        <!--        android:visibility="gone"/>-->
+            <include
+                android:id="@+id/googlePayButton"
+                layout="@layout/add_cart_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buy_button_height"
+                android:layout_marginBottom="20dp"
+                />
 
     </LinearLayout>
 

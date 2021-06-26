@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val getShirtList = GetShirtList(ShirtRepositoryImpl(Api()))
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this,2)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
         binding.recyclerViewShirts.layoutManager = layoutManager
-        var adapter =  ShirtAdapter(shirts,context = this){
+        var adapter = ShirtAdapter(shirts, context = this) {
 
         }
-        binding.recyclerViewShirts.adapter =adapter
+        binding.recyclerViewShirts.adapter = adapter
 
         getShirtList.getCategoriesList(
             success = {
@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
             failure = ::handleError
         )
     }
-
-
 
     private fun handleError(ex: Throwable?) {
 
