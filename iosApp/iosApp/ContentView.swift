@@ -3,22 +3,43 @@ import shared
 
 struct ContentView: View {
     let getShirtList = Injector.init().getShirtList
+    
     @State var greet = "Loading..."
+    @State var shirts = [Shirt]()
+    
     func load(){
-        getShirtList.getCategory(string: "ts_10_13058b") { shirt in
-            print(shirt)
-            self.greet = shirt.description()
+        getShirtList.getCategoriesList { (shirtsList) in
+            self.shirts = shirtsList
         } failure: { (error) in
-            greet = "Error: \(error)"
+            print(error)
         }
+
     }
 
 	var body: some View {
         
+        NavigationView {
+                    //3.
+                    List(shirts, id: \.self) { shirt in
+                    
+                        VStack(alignment: .leading) {
+                                 
+                            Text(shirt.title)
+                                .font(.title)
+                                .fontWeight(.bold)
+                            Text(String(shirt.price))
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                            Text(shirt.description)
+                                .font(.body)
+                        }
+                    }
+                    //2.
+                    .onAppear() {
+                       load()
+                    }.navigationTitle("TShirt Cool Store")
+                }
 
-        Text(greet).onAppear(){
-            load()
-        }
 		
 	}
 }
