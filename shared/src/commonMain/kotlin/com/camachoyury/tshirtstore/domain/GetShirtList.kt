@@ -1,5 +1,7 @@
-package com.camachoyury.tshirtstore
+package com.camachoyury.tshirtstore.domain
 
+import com.camachoyury.tshirtstore.data.Shirt
+import com.camachoyury.tshirtstore.data.repository.ShirtRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.collect

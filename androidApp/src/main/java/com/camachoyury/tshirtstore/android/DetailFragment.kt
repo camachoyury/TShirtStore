@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.camachoyury.tshirtstore.GetShirtList
-import com.camachoyury.tshirtstore.ShirtRepositoryImpl
+import com.camachoyury.tshirtstore.domain.GetShirtList
+import com.camachoyury.tshirtstore.data.Shirt
+import com.camachoyury.tshirtstore.data.repository.ShirtRepositoryImpl
 import com.camachoyury.tshirtstore.android.databinding.FragmentSecondBinding
-import com.camachoyury.tshirtstore.network.Api
+import com.camachoyury.tshirtstore.data.network.Api
 
 class DetailFragment : Fragment() {
 
@@ -35,26 +36,24 @@ class DetailFragment : Fragment() {
 
         getShirtList.getCategory(id,
             success = {
-                binding.detailTitle.text = it.title
-                binding.detailDescription.text = it.description
-                binding.detailPrice.text = it.price.toString()
-                val imageUri = "@drawable/${it.image}"
-                val imageResource =
-                    resources.getIdentifier(imageUri, null, this.context?.packageName)
-                binding.detailImage.setImageResource(imageResource)
-
+                updateUI(it)
             },
             failure = ::handleError
         )
-//        binding.buttonSecond.setOnClickListener {
-//            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-//        }
+    }
+
+    private fun updateUI(shirt: Shirt){
+        binding.detailTitle.text = shirt.title
+        binding.detailDescription.text = shirt.description
+        binding.detailPrice.text = shirt.price.toString()
+        val imageUri = "@drawable/${shirt.image}"
+        val imageResource =
+            resources.getIdentifier(imageUri, null, this.context?.packageName)
+        binding.detailImage.setImageResource(imageResource)
     }
 
     private fun handleError(ex: Throwable?) {
-
         ex?.printStackTrace()
-
     }
 
     override fun onDestroyView() {

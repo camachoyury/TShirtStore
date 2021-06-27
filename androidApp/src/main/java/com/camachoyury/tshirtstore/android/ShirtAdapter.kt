@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.camachoyury.tshirtstore.Shirt
+import com.camachoyury.tshirtstore.data.Shirt
 import com.camachoyury.tshirtstore.android.databinding.ShirtItemBinding
 
 class ShirtAdapter(

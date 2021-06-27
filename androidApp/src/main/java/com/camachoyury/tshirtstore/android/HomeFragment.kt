@@ -9,23 +9,29 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.camachoyury.tshirtstore.GetShirtList
+import com.camachoyury.tshirtstore.domain.GetShirtList
 import com.camachoyury.tshirtstore.Injector
-import com.camachoyury.tshirtstore.Shirt
+import com.camachoyury.tshirtstore.data.Shirt
 import com.camachoyury.tshirtstore.android.databinding.FragmentFirstBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
-    private lateinit var  getShirtList:GetShirtList
+
+    //Common class declaration GetShirtList
+    private lateinit var  getShirtList: GetShirtList
+
     private var shirts: MutableList<Shirt> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         getShirtList = Injector.getShirtList
+
+        //calling the Injector getting GetShirtList
+        getShirtList = Injector.getShirtList
+
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -33,13 +39,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        binding.buttonFirst.setOnClickListener {
-//
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
-//        }
-
-
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager( this.requireContext(),2)
         binding.recyclerViewShirts.layoutManager = layoutManager
         var adapter =  ShirtAdapter(shirts,context = this.requireContext()){
@@ -47,11 +46,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
         }
         binding.recyclerViewShirts.adapter = adapter
-
+        //Request to get the Shirts List
         getShirtList.getCategoriesList(
             success = {
                 adapter.setShirtList(it)
-
             },
             failure = ::handleError
         )

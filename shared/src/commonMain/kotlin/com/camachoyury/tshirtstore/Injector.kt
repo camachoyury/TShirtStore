@@ -1,6 +1,8 @@
 package com.camachoyury.tshirtstore
 
-import com.camachoyury.tshirtstore.network.Api
+import com.camachoyury.tshirtstore.domain.GetShirtList
+import com.camachoyury.tshirtstore.data.network.Api
+import com.camachoyury.tshirtstore.data.repository.ShirtRepositoryImpl
 
 object Injector {
 

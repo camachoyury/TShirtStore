@@ -2,15 +2,21 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
+    
     let getShirtList = Injector.init().getShirtList
     
     @State var greet = "Loading..."
+    
     @State var shirts = [Shirt]()
     
     func load(){
+        
         getShirtList.getCategoriesList { (shirtsList) in
+            
             self.shirts = shirtsList
+            
         } failure: { (error) in
+            
             print(error)
         }
 

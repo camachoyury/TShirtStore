@@ -1,5 +1,4 @@
-package com.camachoyury.tshirtstore
-
+package com.camachoyury.tshirtstore.common
 
 import kotlinx.coroutines.CoroutineDispatcher
 

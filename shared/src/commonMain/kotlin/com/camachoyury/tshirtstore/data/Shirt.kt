@@ -1,4 +1,4 @@
-package com.camachoyury.tshirtstore
+package com.camachoyury.tshirtstore.data
 
 import kotlinx.serialization.Serializable
 

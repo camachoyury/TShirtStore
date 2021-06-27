@@ -1,6 +1,6 @@
-package com.camachoyury.tshirtstore.network
+package com.camachoyury.tshirtstore.data.network
 
-import com.camachoyury.tshirtstore.ShirtResponse
+import com.camachoyury.tshirtstore.data.repository.ShirtResponse
 import io.ktor.client.*
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
@@ -24,6 +24,4 @@ class Api {
     suspend fun getTShirtList(): ShirtResponse {
         return client.get("https://run.mocky.io/v3/ef04c8ac-6e91-4059-9c62-b2de95b55c27")
     }
-
-
 }
