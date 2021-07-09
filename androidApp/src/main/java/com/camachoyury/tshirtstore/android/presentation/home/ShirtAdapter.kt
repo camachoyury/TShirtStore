@@ -28,8 +28,6 @@ class ShirtAdapter(
         this.listOfShirts = listOfMovies
         notifyDataSetChanged()
     }
-    inner class ShirtViewHolder(var binding: ShirtItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ShirtViewHolder, position: Int) {
@@ -47,6 +45,9 @@ class ShirtAdapter(
             }
         }
     }
+
+    inner class ShirtViewHolder(var binding: ShirtItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     interface OnItemClickListener {
         fun onItemClick(shirt: Shirt?)
