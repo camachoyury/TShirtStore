@@ -8,4 +8,3 @@ pluginManagement {
 
 rootProject.name = "TShirtStore"
 include(":androidApp")
-include(":shared")

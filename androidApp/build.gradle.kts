@@ -2,13 +2,19 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-android")
+    id ("kotlin-kapt")
     id ("androidx.navigation.safeargs.kotlin")
+    kotlin("plugin.serialization")
+    id ("dagger.hilt.android.plugin")
 }
 
 val composeVersion = "1.0.0-rc01"
+val retrofitVersion = "2.9.0"
+val kotlinCoroutineVersion = "1.4.2"
+val  lifecycleVersion = "2.2.0"
+val hiltVersion = "2.37"
 
 dependencies {
-    implementation(project(":shared"))
     implementation("androidx.compose.runtime:runtime:$composeVersion")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -16,6 +22,48 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.8.1")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion")
+
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutineVersion")
+
+    implementation("io.ktor:ktor-client-okhttp:1.6.0")
+    implementation("io.ktor:ktor-client-json:1.6.0")
+    implementation("io.ktor:ktor-client-logging:1.6.0")
+    implementation("io.ktor:ktor-client-serialization:1.6.0")
+
+    // Kotlinx Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("com.google.dagger:hilt-android:$hiltVersion")
+    kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation ("androidx.hilt:hilt-common:1.0.0-alpha03")
+    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    // When using Kotlin.
+    kapt ("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0")
+
+    implementation ("androidx.fragment:fragment-ktx:1.3.0")
+
+    implementation ("com.squareup.okhttp3:okhttp:4.9.0")
+
+    implementation ("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation ("androidx.recyclerview:recyclerview:1.0.0")
+    implementation ("com.google.android.material:material:1.0.0")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.0.0")
+    implementation ("pub.devrel:easypermissions:3.0.0")
+    implementation ("com.google.android.gms:play-services-location:17.0.0")
+    implementation ("androidx.ui:ui-framework:0.1.0-dev03")
 }
 
 android {
@@ -52,7 +100,9 @@ android {
         jvmTarget = "1.8"
     }
 }
-
+kapt {
+    correctErrorTypes = true
+}
 //tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 //    kotlinOptions {
 //        jvmTarget = JavaVersion.VERSION_1_8.toString()
