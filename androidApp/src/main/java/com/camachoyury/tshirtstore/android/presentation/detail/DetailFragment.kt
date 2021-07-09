@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.camachoyury.tshirtstore.android.Injector
 
 import com.camachoyury.tshirtstore.android.databinding.FragmentSecondBinding
-import com.camachoyury.tshirtstore.android.presentation.home.ShirtListState
-import com.camachoyury.tshirtstore.android.presentation.home.ShirtListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -23,27 +20,23 @@ class DetailFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
-    var id = ""
-
     private val viewModel: DetailShirtViewModel by viewModels()
+    var id = ""
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
          id = arguments?.getString("id").toString()
         return binding.root
-
     }
 
     @ExperimentalCoroutinesApi
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         lifecycleScope.launch {
             viewModel.loadById(id)
             viewModel.shirt.collect { uiState ->
@@ -59,20 +52,12 @@ class DetailFragment : Fragment() {
                     }
                     is ShirtDetailState.Error -> handleError(uiState.exception)
                 }
-
             }
         }
-
-//        binding.buttonSecond.setOnClickListener {
-//            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-//        }
     }
 
-
     private fun handleError(ex: Throwable?) {
-
         ex?.printStackTrace()
-
     }
 
     override fun onDestroyView() {

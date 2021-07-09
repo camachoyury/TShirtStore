@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.camachoyury.tshirtstore.android.Injector
 import com.camachoyury.tshirtstore.android.R
 import com.camachoyury.tshirtstore.android.domain.ShirtListUserCase
 import com.camachoyury.tshirtstore.android.data.repository.Shirt
@@ -27,55 +26,48 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
-    private lateinit var  shirtListUserCase: ShirtListUserCase
     private var shirts: MutableList<Shirt> = ArrayList()
+    lateinit var adapter: ShirtAdapter
 
     private val viewModel: ShirtListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-         shirtListUserCase = Injector.SHIRT_LIST_USER_CASE
+    ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-
     }
+
 
     @ExperimentalCoroutinesApi
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.buttonFirst.setOnClickListener {
-//
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
-//        }
-
         viewModel.load()
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager( this.requireContext(),2)
         binding.recyclerViewShirts.layoutManager = layoutManager
-        var adapter =  ShirtAdapter(shirts,context = this.requireContext()){
+        adapter =  ShirtAdapter(shirts,context = this.requireContext()){
             val bundle = bundleOf("id" to it.image)
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
         }
-        binding.recyclerViewShirts.adapter = adapter
 
+        binding.recyclerViewShirts.adapter = adapter
         lifecycleScope.launch {
             viewModel.shirtList.collect { uiState ->
                 when(uiState){
                     is ShirtListState.Success -> adapter.setShirtList(uiState.shirts)
                     is ShirtListState.Error -> handleError(uiState.exception)
                 }
-
             }
         }
     }
+
     private fun handleError(ex: Throwable?) {
-
         ex?.printStackTrace()
-
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -23,6 +23,7 @@ class ShirtAdapter(
 
     override fun getItemCount(): Int = listOfShirts.size
 
+    @SuppressLint("NotifyDataSetChanged")
     public fun setShirtList(listOfMovies: List<Shirt>) {
         this.listOfShirts = listOfMovies
         notifyDataSetChanged()
