@@ -15,23 +15,21 @@ val  lifecycleVersion = "2.2.0"
 val hiltVersion = "2.37"
 
 dependencies {
+    //Compose
     implementation("androidx.compose.runtime:runtime:$composeVersion")
-//    implementation("androidx.compose.ui.platform:$composeVersion")
     implementation ("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation ("androidx.compose.material:material:$composeVersion")
     implementation ("androidx.compose.ui:ui-tooling:$composeVersion")
+
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.8.1")
 
+    //Coroutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion")
     implementation("androidx.compose.ui:ui:1.0.0-beta09")
@@ -45,10 +43,8 @@ dependencies {
 
     // Kotlinx Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-    implementation ("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
-    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    //Hilt
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
     implementation ("androidx.hilt:hilt-common:1.0.0-alpha03")
@@ -67,9 +63,11 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.0.0")
     implementation ("com.google.android.material:material:1.0.0")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.0.0")
-    implementation ("pub.devrel:easypermissions:3.0.0")
-    implementation ("com.google.android.gms:play-services-location:17.0.0")
     implementation ("androidx.ui:ui-framework:0.1.0-dev03")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
 }
 
 android {
