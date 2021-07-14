@@ -17,50 +17,26 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.camachoyury.tshirtstore.android.R
-import com.camachoyury.tshirtstore.android.databinding.ActivityShirtDetailBinding
+import com.camachoyury.tshirtstore.android.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityShirtDetailBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityShirtDetailBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.composeToolbar.setContent {
-            TopAppBar(
-                title = {
-                    Text(text = "Pets Show")
-                },
-                navigationIcon = {
-                    IconButton(onClick = { }) {
-                        Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu Btn")
-                    }
-                },
-                backgroundColor = Color.Transparent,
-                contentColor = Color.Gray,
-                elevation = 2.dp
-            )
-        }
-//        setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_shirt_detail)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.bottomNavigation.setupWithNavController(
             findNavController(R.id.nav_host_fragment_content_shirt_detail)
         )
     }
-
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_shirt_detail)
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
 }
