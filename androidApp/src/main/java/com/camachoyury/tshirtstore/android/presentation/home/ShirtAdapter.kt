@@ -36,7 +36,6 @@ class ShirtAdapter(
                 binding.textName.text = title
                 binding.textCategory.text = category
                 binding.textPrice.text = "Price: ${price.toString()}"
-
                 val imageUri = "@drawable/${image}"
                 val imageResource =
                     context.resources.getIdentifier(imageUri, null, context.packageName)

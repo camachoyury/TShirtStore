@@ -16,6 +16,11 @@ val hiltVersion = "2.37"
 
 dependencies {
     implementation("androidx.compose.runtime:runtime:$composeVersion")
+//    implementation("androidx.compose.ui.platform:$composeVersion")
+    implementation ("androidx.appcompat:appcompat:1.3.0")
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation ("androidx.compose.material:material:$composeVersion")
+    implementation ("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
@@ -29,6 +34,7 @@ dependencies {
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion")
+    implementation("androidx.compose.ui:ui:1.0.0-beta09")
 
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutineVersion")
 
