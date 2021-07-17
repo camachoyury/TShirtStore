@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.camachoyury.tshirtstore.android.App
 
 import com.camachoyury.tshirtstore.android.databinding.FragmentSecondBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,6 +50,9 @@ class DetailFragment : Fragment() {
                         val imageResource =
                             resources.getIdentifier(imageUri, null, this@DetailFragment.context?.packageName)
                         binding.detailImage.setImageResource(imageResource)
+                        binding.googlePayButton.root.setOnClickListener {
+                            App.emulatedDB.add(uiState.shirt)
+                        }
                     }
                     is ShirtDetailState.Error -> handleError(uiState.exception)
                 }

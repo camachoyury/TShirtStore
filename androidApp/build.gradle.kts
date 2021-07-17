@@ -8,7 +8,8 @@ plugins {
     id ("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.0.0-rc01"
+val composeVersion = "1.0.0-rc02"
+val composeVersionBeta = "1.0.0-beta09"
 val retrofitVersion = "2.9.0"
 val kotlinCoroutineVersion = "1.4.2"
 val  lifecycleVersion = "2.2.0"
@@ -20,7 +21,14 @@ dependencies {
     implementation ("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation ("androidx.compose.material:material:$composeVersion")
-    implementation ("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+    implementation("androidx.activity:activity-compose:1.3.0-rc02")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
+    implementation ("androidx.compose.ui:ui-tooling:$composeVersionBeta")
+   //preview
+    debugImplementation ("androidx.compose.ui:ui-tooling:$composeVersionBeta")
+    implementation ("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+
 
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -68,16 +76,21 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation ("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
+    buildToolsVersion = "30.0.3"
     defaultConfig {
         applicationId = "com.camachoyury.tshirtstore.android"
-        minSdkVersion(21)
-        targetSdkVersion(30)
+        minSdk = 21
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
     buildTypes {
         getByName("release") {
@@ -102,16 +115,19 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        useIR = true
     }
 }
 kapt {
     correctErrorTypes = true
 }
-//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-//    kotlinOptions {
-//        jvmTarget = JavaVersion.VERSION_1_8.toString()
-//        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
-//            "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
-//        )
-//    }
-//}
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
+            "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        )
+    }
+}
+
+

@@ -25,4 +25,8 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <activity
+        android:id="@+id/shoppingCartActivity"
+        android:name="com.camachoyury.tshirtstore.android.presentation.cart.ShoppingCartActivity"
+        android:label="ShoppingCartActivity" />
 </navigation>

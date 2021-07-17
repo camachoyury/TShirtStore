@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/SecondFragment"
+        android:id="@+id/shoppingCartActivity"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="Cart" />
 
