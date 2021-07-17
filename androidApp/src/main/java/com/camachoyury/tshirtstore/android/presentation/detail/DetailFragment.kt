@@ -1,12 +1,15 @@
 package com.camachoyury.tshirtstore.android.presentation.detail
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.camachoyury.tshirtstore.android.App
 
 import com.camachoyury.tshirtstore.android.databinding.FragmentSecondBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,6 +52,11 @@ class DetailFragment : Fragment() {
                         val imageResource =
                             resources.getIdentifier(imageUri, null, this@DetailFragment.context?.packageName)
                         binding.detailImage.setImageResource(imageResource)
+                        binding.googlePayButton.root.setOnClickListener {
+                            App.emulatedDB.add(uiState.shirt)
+                            val toast = Toast.makeText(context, "Added ${uiState.shirt.title}", Toast.LENGTH_LONG)
+                            toast.show()
+                        }
                     }
                     is ShirtDetailState.Error -> handleError(uiState.exception)
                 }
