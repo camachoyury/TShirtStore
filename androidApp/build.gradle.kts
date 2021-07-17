@@ -9,6 +9,7 @@ plugins {
 }
 
 val composeVersion = "1.0.0-rc01"
+val composeVersionBeta = "1.0.0-beta09"
 val retrofitVersion = "2.9.0"
 val kotlinCoroutineVersion = "1.4.2"
 val  lifecycleVersion = "2.2.0"
@@ -20,7 +21,10 @@ dependencies {
     implementation ("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation ("androidx.compose.material:material:$composeVersion")
-    implementation ("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+    implementation("androidx.activity:activity-compose:1.3.0-rc02")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
+    implementation ("androidx.compose.ui:ui-tooling:$composeVersionBeta")
 
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -107,11 +111,13 @@ android {
 kapt {
     correctErrorTypes = true
 }
-//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-//    kotlinOptions {
-//        jvmTarget = JavaVersion.VERSION_1_8.toString()
-//        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
-//            "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
-//        )
-//    }
-//}
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
+            "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        )
+    }
+}
+
+

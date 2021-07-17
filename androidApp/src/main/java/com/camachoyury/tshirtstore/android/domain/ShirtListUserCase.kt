@@ -16,17 +16,4 @@ class ShirtListUserCase(private val shirtRepository: ShirtRepository) {
         return shirtRepository.getTShirtList()
         }
 
-//
-//    fun getCategory(string:String, success: (Shirt) -> Unit, failure: (Throwable?) -> Unit) {
-//        coroutineScope.launch {
-//            try {
-//                shirtRepository.getTShirtList(string).collect {
-//                    success(it)
-//                }
-//            } catch (e: Throwable) {
-//                failure(e)
-//            }
-//        }
-//    }
-
 }
