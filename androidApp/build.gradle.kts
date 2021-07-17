@@ -26,8 +26,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     implementation ("androidx.compose.ui:ui-tooling:$composeVersionBeta")
    //preview
-    debugImplementation ("androidx.compose.ui:ui-tooling:$composeVersionBeta")
-    implementation ("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+//    debugImplementation ("androidx.compose.ui:ui-tooling:$composeVersionBeta")
+//    implementation ("androidx.compose.ui:ui-tooling-preview:$composeVersion")
 
 
     implementation("com.google.android.material:material:1.3.0")
