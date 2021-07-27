@@ -45,6 +45,12 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:1.6.0")
     implementation("io.ktor:ktor-client-serialization:1.6.0")
 
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.8.1")
+
+
     // Kotlinx Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
 
