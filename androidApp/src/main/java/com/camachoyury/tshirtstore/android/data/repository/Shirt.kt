@@ -1,8 +1,6 @@
 package com.camachoyury.tshirtstore.android.data.repository
 
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class Shirt ( val name : String,
                   val title : String,
                   val category : String,

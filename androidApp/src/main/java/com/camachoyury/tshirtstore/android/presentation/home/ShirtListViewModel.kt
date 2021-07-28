@@ -3,7 +3,7 @@ package com.camachoyury.tshirtstore.android.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.camachoyury.tshirtstore.android.data.repository.Shirt
-import com.camachoyury.tshirtstore.android.domain.ShirtListUserCase
+import com.camachoyury.tshirtstore.android.data.repository.ShirtRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ShirtListViewModel @Inject constructor (private val shirtListUserCase: ShirtListUserCase): ViewModel() {
+class ShirtListViewModel @Inject constructor (private val shirtRepository: ShirtRepository): ViewModel() {
 
     private val _shirtList: MutableStateFlow<ShirtListState> =
         MutableStateFlow(ShirtListState.LoadingState)
@@ -27,7 +27,7 @@ class ShirtListViewModel @Inject constructor (private val shirtListUserCase: Shi
     @ExperimentalCoroutinesApi
     fun load() = viewModelScope.launch {
         _shirtList.value = ShirtListState.LoadingState
-        shirtListUserCase().collect {
+        shirtRepository.getTShirtById().collect {
             _shirtList.value = ShirtListState.Success(it)
         }
     }

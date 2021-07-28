@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.camachoyury.tshirtstore.android.R
-import com.camachoyury.tshirtstore.android.domain.ShirtListUserCase
 import com.camachoyury.tshirtstore.android.data.repository.Shirt
 
 import com.camachoyury.tshirtstore.android.databinding.FragmentFirstBinding

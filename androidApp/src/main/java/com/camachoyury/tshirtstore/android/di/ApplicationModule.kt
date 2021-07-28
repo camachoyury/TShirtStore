@@ -2,11 +2,9 @@ package com.camachoyury.tshirtstore.android.di
 
 import android.app.Application
 import android.content.Context
-import com.camachoyury.tshirtstore.android.data.network.Api
 import com.camachoyury.tshirtstore.android.data.network.ShirtService
 import com.camachoyury.tshirtstore.android.data.repository.ShirtRepositoryImpl
-import com.camachoyury.tshirtstore.android.domain.ShirtListUserCase
-import com.camachoyury.tshirtstore.android.domain.repository.ShirtRepository
+import com.camachoyury.tshirtstore.android.data.repository.ShirtRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,14 +60,5 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideShirtService(retrofit: Retrofit): ShirtService =  retrofit.create(ShirtService::class.java)
-
-
-    @Provides
-    @Singleton
-    fun provideShirtUseCase(shirtRepository: ShirtRepository) : ShirtListUserCase{
-        return ShirtListUserCase(shirtRepository)
-
-    }
-
 
 }
