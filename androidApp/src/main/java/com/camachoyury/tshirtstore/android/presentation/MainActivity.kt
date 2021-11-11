@@ -21,7 +21,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.camachoyury.tshirtstore.android.R
 import com.camachoyury.tshirtstore.android.databinding.ActivityMainBinding
-import com.camachoyury.tshirtstore.android.presentation.cart.ShoppingCartActivity
 import com.camachoyury.tshirtstore.android.presentation.composables.ShirtStoreToolBar
 import dagger.hilt.android.AndroidEntryPoint
 

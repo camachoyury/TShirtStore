@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.camachoyury.tshirtstore.android.databinding.ShirtItemBinding
 import com.camachoyury.tshirtstore.android.data.repository.Shirt
 
+
 class ShirtAdapter(
     private var listOfShirts: List<Shirt> = listOf(),
     private val context: Context,

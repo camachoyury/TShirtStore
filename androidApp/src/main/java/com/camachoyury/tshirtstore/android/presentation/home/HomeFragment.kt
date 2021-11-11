@@ -21,6 +21,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -54,9 +55,12 @@ class HomeFragment : Fragment() {
         }
 
         binding.recyclerViewShirts.adapter = adapter
+
+
         lifecycleScope.launch {
             viewModel.shirtList.collect { uiState ->
                 when(uiState){
+
                     is ShirtListState.Success -> adapter.setShirtList(uiState.shirts)
                     is ShirtListState.Error -> handleError(uiState.exception)
                 }

@@ -8,8 +8,9 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ShirtListUserCase(private val shirtRepository: ShirtRepository) {
+class ShirtListUserCase @Inject constructor (private val shirtRepository: ShirtRepository) {
 
 
     operator fun invoke(): Flow<List<Shirt>> {

@@ -13,9 +13,10 @@ val composeVersionBeta = "1.0.0-beta09"
 val retrofitVersion = "2.9.0"
 val kotlinCoroutineVersion = "1.4.2"
 val  lifecycleVersion = "2.2.0"
-val hiltVersion = "2.37"
+val hiltVersion = "2.40"
 
 dependencies {
+
     //Compose
     implementation("androidx.compose.runtime:runtime:$composeVersion")
     implementation ("androidx.appcompat:appcompat:1.3.0")
@@ -55,32 +56,40 @@ dependencies {
     //Hilt
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    implementation ("androidx.hilt:hilt-common:1.0.0-alpha03")
+    implementation ("androidx.hilt:hilt-common:1.0.0")
     implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     // When using Kotlin.
-    kapt ("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+    kapt ("androidx.hilt:hilt-compiler:1.0.0")
 
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.0")
 
-    implementation ("androidx.fragment:fragment-ktx:1.3.0")
+    implementation ("androidx.fragment:fragment-ktx:1.3.6")
 
-    implementation ("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.2")
 
-    implementation ("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation ("androidx.recyclerview:recyclerview:1.0.0")
-    implementation ("com.google.android.material:material:1.0.0")
-    implementation ("androidx.lifecycle:lifecycle-extensions:2.0.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.1")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("com.google.android.material:material:1.4.0")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation ("androidx.ui:ui-framework:0.1.0-dev03")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation ("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+// define a BOM and its version
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
     buildToolsVersion = "30.0.3"
     defaultConfig {
         applicationId = "com.camachoyury.tshirtstore.android"

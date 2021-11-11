@@ -1,25 +1,26 @@
 package com.camachoyury.tshirtstore.android.data.repository
 
-import com.camachoyury.tshirtstore.android.data.network.Api
 import com.camachoyury.tshirtstore.android.domain.repository.ShirtRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class ShirtRepositoryImpl(private val api: Api) : ShirtRepository {
+class ShirtRepositoryImpl @Inject constructor (private val shirtService: ShirtService) :
+    ShirtRepository {
 
-     override fun getTShirtList(): Flow<List<Shirt>> {
+    override fun getTShirtList(): Flow<List<Shirt>> {
         return flow {
-            emit(api.getTShirtList().shirt)
+            emit(shirtService.getShirts().shirts)
         }.flowOn(Dispatchers.IO)
     }
 
-
-    override  fun getTShirtList(id: String ): Flow<Shirt> {
+    override fun getTShirtList(id: String): Flow<Shirt> {
         return flow {
-            val shirt = api.getTShirtList().shirt.find { s -> s.image == id }
+            val shirt = shirtService.getShirts().shirts.find { s -> s.image == id }
             emit(shirt!!)
         }.flowOn(Dispatchers.IO)
     }
+
 }
