@@ -14,7 +14,7 @@ class ShirtListUserCase @Inject constructor (private val shirtRepository: ShirtR
 
 
     operator fun invoke(): Flow<List<Shirt>> {
-        return shirtRepository.getTShirtList()
+        return shirtRepository.getTShirts()
         }
 
 //

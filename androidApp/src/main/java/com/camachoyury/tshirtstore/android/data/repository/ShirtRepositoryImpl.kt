@@ -10,17 +10,16 @@ import javax.inject.Inject
 class ShirtRepositoryImpl @Inject constructor (private val shirtService: ShirtService) :
     ShirtRepository {
 
-    override fun getTShirtList(): Flow<List<Shirt>> {
+     override fun getTShirts(): Flow<List<Shirt>> {
         return flow {
             emit(shirtService.getShirts().shirts)
         }.flowOn(Dispatchers.IO)
     }
 
-    override fun getTShirtList(id: String): Flow<Shirt> {
+    override  fun getTShirtById(id: String ): Flow<Shirt> {
         return flow {
             val shirt = shirtService.getShirts().shirts.find { s -> s.image == id }
             emit(shirt!!)
         }.flowOn(Dispatchers.IO)
     }
-
 }

@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         viewModel.load()
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager( this.requireContext(),2)
         binding.recyclerViewShirts.layoutManager = layoutManager
-        adapter =  ShirtAdapter(shirts,context = this.requireContext()){
+        adapter =  ShirtAdapter(shirts, context = this.requireContext()){
             val bundle = bundleOf("id" to it.image)
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
         }

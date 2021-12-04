@@ -10,12 +10,12 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".presentation.cart.ShoppingCartActivity"
+            android:name=".presentation.cart.CartActivity"
             android:exported="true"
             android:label="@string/title_activity_shopping_cart"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <!-- <activity -->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:exported="true" -->
         <!-- android:label="@string/title_activity_shirt_detail" -->

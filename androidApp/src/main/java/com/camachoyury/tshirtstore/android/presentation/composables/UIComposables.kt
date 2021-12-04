@@ -1,7 +1,6 @@
 package com.camachoyury.tshirtstore.android.presentation.composables
 
 import android.content.Intent
-import androidx.compose.adapters.ComposeViewAdapter
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -16,7 +15,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.camachoyury.tshirtstore.android.R
-import com.camachoyury.tshirtstore.android.presentation.cart.ShoppingCartActivity
+import com.camachoyury.tshirtstore.android.presentation.cart.CartActivity
 import com.camachoyury.tshirtstore.android.presentation.cart.ui.theme.TShirtStoreTheme
 
 
@@ -36,7 +35,7 @@ fun ShirtStoreToolBar(){
             }
         },
         actions = {
-            IconButton(onClick = {  context.startActivity(Intent(context, ShoppingCartActivity::class.java)) }) {
+            IconButton(onClick = {  context.startActivity(Intent(context, CartActivity::class.java)) }) {
                 Icon(Icons.Filled.ShoppingCart, contentDescription = "", tint = Color.White)
             }
         },

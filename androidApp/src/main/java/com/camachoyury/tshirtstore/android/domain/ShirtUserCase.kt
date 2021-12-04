@@ -9,7 +9,7 @@ class ShirtUserCase @Inject constructor(val shirtRepository: ShirtRepository){
 
     operator fun invoke(id:String): Flow<Shirt> {
 
-        return shirtRepository.getTShirtList(id)
+        return shirtRepository.getTShirtById(id)
 
     }
 

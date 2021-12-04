@@ -2,6 +2,8 @@ package com.camachoyury.tshirtstore.android.presentation.cart
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,6 +12,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,21 +23,29 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
-import androidx.ui.core.setContent
 import com.camachoyury.tshirtstore.android.App
-import com.camachoyury.tshirtstore.android.data.repository.Shirt
-import com.camachoyury.tshirtstore.android.presentation.composables.ShirtStoreToolBar
-import com.camachoyury.tshirtstore.android.presentation.cart.ShoppingCartItem as ShoppingCartItem1
 
-class ShoppingCartActivity1: ComponentActivity() {
+import com.camachoyury.tshirtstore.android.data.repository.Shirt
+
+import com.camachoyury.tshirtstore.android.presentation.cart.ui.theme.TShirtStoreTheme
+import com.camachoyury.tshirtstore.android.presentation.composables.ShirtStoreToolBar
+
+import dagger.hilt.android.AndroidEntryPoint
+
+
+@AndroidEntryPoint
+class CartActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            TShirtStoreTheme {
+                Content()
+            }
         }
     }
 }
+
 
 @Composable
 fun Content(){
@@ -47,7 +59,7 @@ fun Content(){
                 .fillMaxHeight()
                 .padding(10.dp)) {
                 items(items = list, itemContent = { item ->
-                    ShoppingCartItem1(item)
+                    ShoppingCartItem(item)
                     Divider(color = Color.Black)
                 })
             }

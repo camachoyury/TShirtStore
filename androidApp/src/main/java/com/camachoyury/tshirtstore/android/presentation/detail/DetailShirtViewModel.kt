@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.camachoyury.tshirtstore.android.data.repository.Shirt
 import com.camachoyury.tshirtstore.android.domain.ShirtUserCase
-import com.camachoyury.tshirtstore.android.presentation.home.ShirtListState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailShirtViewModel @Inject constructor(val shirtUserCase: ShirtUserCase) : ViewModel() {
+class DetailShirtViewModel @Inject constructor(private val shirtUserCase: ShirtUserCase) : ViewModel() {
     private val _shirt: MutableStateFlow<ShirtDetailState> =
         MutableStateFlow(ShirtDetailState.LoadingState)
     val shirt: StateFlow<ShirtDetailState> = _shirt.asStateFlow()

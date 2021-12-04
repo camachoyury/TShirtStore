@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface ShirtRepository {
 
-    fun getTShirtList(): Flow<List<Shirt>>
+    fun getTShirts(): Flow<List<Shirt>>
 
-    fun getTShirtList(id: String ): Flow<Shirt>
+    fun getTShirtById(id: String ): Flow<Shirt>
 
 }

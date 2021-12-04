@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.camachoyury.tshirtstore.android.App
+import com.camachoyury.tshirtstore.android.data.repository.Shirt
 
 import com.camachoyury.tshirtstore.android.databinding.FragmentSecondBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +60,7 @@ class DetailFragment : Fragment() {
             }
         }
     }
+
 
     private fun handleError(ex: Throwable?) {
         ex?.printStackTrace()
